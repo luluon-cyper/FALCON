@@ -13,9 +13,6 @@ def sign_file(input_path: str, output_path: str, secret_key: str) -> str:
     digest = compute_shake256_digest_for_byte_range(pdf_bytes, byte_range)
     signature = falcon_512.sign(private_key, digest)
 
-    with open("test_modify.pdf","wb") as f:
-        f.write(pdf_bytes)
-
     signed_pdf_bytes = embed_signature_into_pdf(pdf_bytes, signature)
     with open(output_path, "wb") as f:
         f.write(signed_pdf_bytes)

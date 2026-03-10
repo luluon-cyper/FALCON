@@ -1,6 +1,6 @@
 import hashlib 
 import re 
-from typing import Tuple, List, Dict, Optional
+from typing import Tuple, List
 
 
 SIG_MARKER_START = b"%%FALCON_PQ_SIG_START\n"
