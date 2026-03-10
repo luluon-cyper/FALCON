@@ -8,3 +8,6 @@ def generate_keys(public_key: str , private_key: str):
     
     with open(private_key, "wb") as f:
         f.write(sk)
+
+    print(len(pk))
+    print(len(sk))

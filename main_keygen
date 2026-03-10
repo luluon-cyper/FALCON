@@ -2,14 +2,16 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import os
 import shutil
+from keygen import generate_keys
 
 output_files = ["public.key", "private.key"]
 
 def process_files():
-    for file in output_files:
-        with open(file, "w", encoding="utf-8") as f:
-            f.write("demo-key-data-2026")
-    
+    public_key = output_files[0]
+    private_key = output_files[1]
+
+    generate_keys(public_key, private_key)
+
     lbl_status.config(text="✨ Đã tạo Key thành công!", foreground="#27ae60")
     show_outputs()
 
@@ -50,7 +52,7 @@ def show_outputs():
         sep.pack(fill="x", padx=5)
 
 root = tk.Tk()
-root.title("Key Generation System v2.0")
+root.title("FALCON")
 root.geometry("480x420")
 root.configure(bg="#f5f7f9")
 
@@ -58,7 +60,7 @@ style = ttk.Style()
 style.configure("Header.TLabel", font=("Segoe UI", 15, "bold"), foreground="#2c3e50")
 style.configure("Primary.TButton", font=("Segoe UI", 10, "bold"))
 
-header = ttk.Label(root, text="HỆ THỐNG QUẢN LÝ KHÓA", style="Header.TLabel", background="#f5f7f9")
+header = ttk.Label(root, text="HỆ THỐNG TẠO KHÓA", style="Header.TLabel", background="#f5f7f9")
 header.pack(pady=20)
 
 frame_action = ttk.Frame(root, padding=10)
@@ -71,7 +73,7 @@ btn_process.pack(pady=10)
 lbl_status = ttk.Label(frame_action, text="Nhấn nút để bắt đầu tạo Key", font=("Segoe UI", 9, "italic"))
 lbl_status.pack()
 
-frame_results = ttk.LabelFrame(root, text=" Danh sách file kết quả ", padding=15)
+frame_results = ttk.LabelFrame(root, text=" Các khóa được tạo ", padding=15)
 frame_results.pack(padx=20, pady=15, fill="both", expand=True)
 
 frame_list = ttk.Frame(frame_results)
