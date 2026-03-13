@@ -157,7 +157,7 @@ SIG_LENGTH_REGEX = re.compile(rb"SigLength:\s*(\d{1,20})")
 CONTENTS_PREFIX = b"Contents: <"
 CONTENTS_SUFFIX = b">\n"
 
-def falcon_prepare_file_with_placeholder(input_path: str, output_path: str, placeholder_len: int = 2048) -> None:
+def falcon_prepare_file_with_placeholder(input_path: str, placeholder_len: int = 2048) -> None:
     with open(input_path, "rb") as f:
         original = f.read()
     
@@ -185,7 +185,7 @@ def falcon_prepare_file_with_placeholder(input_path: str, output_path: str, plac
 
     patched = combined.replace(ZERO_BYTE_RANGE, byte_range, 1)
 
-    with open(output_path, "wb") as f:
+    with open(input_path, "wb") as f:
         f.write(patched)
 
 def falcon_extract_byte_range_and_placeholder(pdf_bytes: bytes, index: int = -1) -> Tuple[List[int], int, int]:

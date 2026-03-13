@@ -18,7 +18,7 @@ def modify_pdf_middle_newfile(input_path: str, output_path: str):
 
 def main():
 
-    input_file = "test_signed.pdf"
+    input_file = "test.pdf"
     signed_file = "test_signed.pdf"
     modify_file = "test_modify.pdf"
     
@@ -27,8 +27,8 @@ def main():
     pk_falcon = "falcon_pub.key"
     sk_falcon = "falcon_priv.key"
 
-    # print("=== TẠO KHÓA FALCON ===")
-    # generate_keys(pk_ed, sk_ed, pk_falcon, sk_falcon)
+    print("=== TẠO KHÓA FALCON ===")
+    generate_keys(pk_ed, sk_ed, pk_falcon, sk_falcon)
 
     print("\n=== KÝ FILE PDF ===")
     sign_file(input_file, signed_file, sk_ed, sk_falcon)

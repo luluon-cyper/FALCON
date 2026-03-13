@@ -26,7 +26,7 @@ def sign_file(input_path: str, output_path: str, sk_ed: str, sk_falcon: str) -> 
     # sign falcon
     #===================
 
-    falcon_prepare_file_with_placeholder(output_path, output_path)
+    falcon_prepare_file_with_placeholder(output_path)
     with open(output_path, "rb") as f:
         pdf_bytes = f.read()
 
