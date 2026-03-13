@@ -18,21 +18,24 @@ def modify_pdf_middle_newfile(input_path: str, output_path: str):
 
 def main():
 
-    input_file = "test.pdf"
+    input_file = "test_signed.pdf"
     signed_file = "test_signed.pdf"
     modify_file = "test_modify.pdf"
-    public_key = "falcon_priv.key"
-    secret_key = "falcon_pub.key"
+    
+    pk_ed = "ed25519_pub.key"
+    sk_ed = "ed25519_priv.key"
+    pk_falcon = "falcon_pub.key"
+    sk_falcon = "falcon_priv.key"
 
-    print("=== TẠO KHÓA FALCON ===")
-    generate_keys(public_key,secret_key)
+    # print("=== TẠO KHÓA FALCON ===")
+    # generate_keys(pk_ed, sk_ed, pk_falcon, sk_falcon)
 
     print("\n=== KÝ FILE PDF ===")
-    sign_file(input_file, signed_file, secret_key)
+    sign_file(input_file, signed_file, sk_ed, sk_falcon)
     print("File đã ký:", signed_file)
 
     print("\n=== XÁC THỰC FILE SAU KHI KÝ ===")
-    ok = verify_file(signed_file, public_key)
+    ok = verify_file(signed_file, pk_ed, pk_falcon)
     print("Kết quả verify:", ok)
 
     print("\n=== CHỈNH SỬA FILE SAU KHI KÝ ===")
@@ -41,7 +44,7 @@ def main():
     print("File đã bị chỉnh sửa")
 
     print("\n=== XÁC THỰC LẠI ===")
-    ok2 = verify_file(modify_file, public_key)
+    ok2 = verify_file(modify_file, pk_ed, pk_falcon)
     print("Kết quả verify:", ok2)
 
 
