@@ -5,14 +5,21 @@ from utils import *
 
 def verify_file(pdf_path: str, pk_ed: str, pk_falcon: str) -> bool:
     
-    with open(pdf_path, "rb") as f:
-        pdf_bytes = f.read()
-
     with open(pk_ed, "rb") as f:
         pk1 = f.read()
 
     with open(pk_falcon, "rb") as f:
         pk2 = f.read()
+
+    if len(pk1) != 32:
+        return False
+
+    if len(pk2) != 897:
+        return False
+    
+    with open(pdf_path, "rb") as f:
+        pdf_bytes = f.read()
+
     
     index = 0
     ok_ed = False
