@@ -8,7 +8,7 @@ from keygen import generate_keys
 # --- 1. CẤU HÌNH TRANG ---
 st.set_page_config(
     page_title="PQC Hybrid Signature",
-    page_icon="🔐",
+    page_icon="logobig.jpg",
     layout="wide",
     initial_sidebar_state="expanded"
 )
