@@ -212,11 +212,11 @@ elif menu == "KÝ SỐ TÀI LIỆU":
                                 if os.path.exists(f_path): os.remove(f_path)
                         
                         st.success("Tài liệu của bạn đã được ký an toàn!")
-                        st.download_button("⬇️ TẢI XUỐNG PDF ĐÃ KÝ", signed_bytes, file_name=f"signed_{pdf_file.name}", use_container_width=True)
+                        st.download_button("TẢI XUỐNG PDF ĐÃ KÝ", signed_bytes, file_name=f"signed_{pdf_file.name}", use_container_width=True)
                     except Exception as e:
                         st.error(f"Lỗi xử lý: {str(e)}")
                 else:
-                    st.warning("⚠️ Vui lòng tải lên đầy đủ cả 2 file khóa bí mật.")
+                    st.warning("Vui lòng tải lên đầy đủ cả 2 file khóa bí mật.")
                     
     st.info("""
     **Hướng dẫn sử dụng**
@@ -268,9 +268,9 @@ else:
                         
                         if is_valid:
                             st.balloons()
-                            st.success("###KẾT QUẢ: HỢP LỆ\nTài liệu nguyên bản và chữ ký khớp tuyệt đối. Không có dấu hiệu bị chỉnh sửa.")
+                            st.success("### KẾT QUẢ: HỢP LỆ\nTài liệu nguyên bản và chữ ký khớp tuyệt đối. Không có dấu hiệu bị chỉnh sửa.")
                         else:
-                            st.error("###KẾT QUẢ: KHÔNG HỢP LỆ\nCảnh báo: Tài liệu đã bị sửa đổi trái phép hoặc bộ khóa không khớp!")
+                            st.error("### KẾT QUẢ: KHÔNG HỢP LỆ\nCảnh báo: Tài liệu đã bị sửa đổi trái phép hoặc bộ khóa không khớp!")
                     except Exception as e:
                         st.error(f"Lỗi xác thực: Có thể định dạng file không đúng hoặc thiếu marker chữ ký. Chi tiết: {str(e)}")
                 else:
