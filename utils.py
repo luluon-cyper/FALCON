@@ -85,7 +85,7 @@ def ed_extract_byte_range_and_placeholder(pdf_bytes: bytes, index: int = -1) -> 
 
     return byte_range, marker_start, marker_end+len(ED_SIG_MARKER_END)
 
-def ed_compute_sha256_digest_for_byte_range(pdf_bytes: bytes, byte_range: List[int]) -> bytes:
+def ed_compute_sha512_digest_for_byte_range(pdf_bytes: bytes, byte_range: List[int]) -> bytes:
     offset1, length1, offset2, length2 = byte_range
     
     part1 = pdf_bytes[offset1: offset1 + length1]
@@ -283,5 +283,3 @@ def falcon_extract_signature_hex_from_pdf(pdf_bytes: bytes, index: int = -1) -> 
     sign_byte = pdf_bytes[sign_start:sign_start+sig_len]
 
     return sign_byte
-
-

@@ -128,24 +128,26 @@ def render_page_header(title, desc):
 # ==========================================
 # TRANG 1: QUẢN LÝ KHÓA
 # ==========================================
-if menu == "QUẢN LÝ KHÓA":
-    render_page_header("Khởi tạo bộ khóa Hybrid", "Tạo và lưu trữ các cặp khóa an toàn kết hợp thuật toán cổ điển và hậu lượng tử.")
-    
-    with st.container(border=True):
-        st.markdown('<div class="section-header">Bảng điều khiển sinh khóa</div>', unsafe_allow_html=True)
-        
-        # Nút bấm đã được sửa lỗi logic (chỉ xóa/tạo khi bấm)
-        if st.button("BẮT ĐẦU TẠO BỘ KHÓA MỚI", use_container_width=True):
-            with st.spinner("Đang tính toán các tham số mạng tinh thể và đường cong elliptic..."):
-                for k in [SK_ED, PK_ED, SK_FALCON, PK_FALCON]:
-                    if os.path.exists(k): os.remove(k)
-                generate_keys(PK_ED, SK_ED, PK_FALCON, SK_FALCON)
-            st.success("Chúc mừng! Bộ khóa Hybrid đã được khởi tạo thành công.")
 
-    st.markdown("<br>", unsafe_allow_html=True)
+
+if menu == "🔑 KHỞI TẠO KHÓA":
+    if os.path.exists(SK_ED):
+        os.remove(SK_ED)
+    if os.path.exists(PK_ED):
+        os.remove(PK_ED)
+    if os.path.exists(SK_FALCON):
+        os.remove(SK_FALCON)
+    if os.path.exists(PK_FALCON):
+        os.remove(PK_FALCON)
+
+    render_header("Quản lý Khóa Mã hóa", "Tạo và lưu trữ các cặp khóa Hybrid (Cổ điển & Hậu lượng tử)", "🔑")
     
-    # Hiển thị khu vực tải khóa nếu file đã tồn tại
-    if os.path.exists(SK_ED) and os.path.exists(SK_FALCON):
+    col_info, col_main = st.columns([1, 2], gap="large")
+    
+    with col_info:
+        st.info("💡 **Lưu ý quan trọng:**\n\n1. **Private Key:** Tuyệt đối giữ bí mật.\n2. **Public Key:** Dùng để gửi cho người nhận xác thực.\n3. Khóa cũ sẽ bị ghi đè nếu bạn tạo khóa mới.")
+
+    with col_main:
         with st.container(border=True):
             st.markdown('<div class="section-header">Tải bộ khóa về máy</div>', unsafe_allow_html=True)
             col1, col2 = st.columns(2)
@@ -216,22 +218,7 @@ elif menu == "KÝ SỐ TÀI LIỆU":
                     except Exception as e:
                         st.error(f"Lỗi xử lý: {str(e)}")
                 else:
-                    st.warning("Vui lòng tải lên đầy đủ cả 2 file khóa bí mật.")
-                    
-    st.info("""
-    **Hướng dẫn sử dụng**
-
-    1. Tải lên file PDF cần ký.
-    2. Tải lên 2 khóa bí mật:
-    - Ed25519 Private Key
-    - Falcon Private Key
-    3. Nhấn **"THỰC HIỆN KÝ SỐ HYBRID"**.
-    4. Tải xuống file PDF đã được ký.
-
-    **Lưu ý**
-    - File đầu vào phải là PDF.
-    - Không chỉnh sửa file sau khi ký nếu không sẽ mất hiệu lực.
-    """)
+                    st.error("Vui lòng tải lên đầy đủ các tệp yêu cầu.")
 
 # ==========================================
 # TRANG 3: XÁC THỰC
