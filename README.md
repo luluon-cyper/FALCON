@@ -1,14 +1,7 @@
 # eSign v1.0 - Hệ thống Ký số Hybrid (Ed25519 & Falcon-512)
 
 <p align="center">
-  <img src="assets/logobig.jpg" alt="eSign Logo" width="150"/>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/github/v/release/YOUR_GITHUB_USERNAME/esign-pqc-hybrid?style=flat-square&color=blue" alt="Current Release"/>
-  <img src="https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square&logo=windows" alt="Platform"/>
-  <img src="https://img.shields.io/badge/Algorithms-Ed25519%20%2B%20Falcon--512-orange?style=flat-square" alt="Cryptography Algorithms"/>
-  <img src="https://img.shields.io/github/license/YOUR_GITHUB_USERNAME/esign-pqc-hybrid?style=flat-square" alt="License"/>
+  <img src="logobig.jpg" alt="eSign Logo" width="150"/>
 </p>
 
 ---
@@ -28,7 +21,7 @@
 
 ## Tải về và Cài đặt
 
-1. Chuyển đến trang **[Releases](https://github.com/YOUR_GITHUB_USERNAME/esign-pqc-hybrid/releases/latest)** của dự án.
+1. Chuyển đến trang **[Releases](https://github.com/luluon-cyper/FALCON/releases/tag/v1.0)** của dự án.
 2. Tải xuống file cài đặt **`eSign_v1.0_Setup.exe`**.
 3. Chạy file vừa tải về và bấm **Next** để cài đặt.
 4. Mở ứng dụng **eSign** từ shortcut trên màn hình Desktop của bạn và sử dụng.
