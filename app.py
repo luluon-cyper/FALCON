@@ -129,15 +129,6 @@ def render_page_header(title, desc):
 # TRANG 1: QUẢN LÝ KHÓA
 # ==========================================
 
-if os.path.exists(PK_ED):
-    os.remove(PK_ED)
-if os.path.exists(SK_ED):
-    os.remove(SK_ED)
-if os.path.exists(PK_FALCON):
-    os.remove(PK_FALCON)
-if os.path.exists(SK_FALCON):
-    os.remove(SK_FALCON)
-
 if menu == "QUẢN LÝ KHÓA":
     render_page_header("Khởi tạo bộ khóa Hybrid", "Tạo và lưu trữ các cặp khóa an toàn kết hợp thuật toán cổ điển và hậu lượng tử.")
     
