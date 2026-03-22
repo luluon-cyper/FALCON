@@ -232,7 +232,6 @@ elif menu == "KÝ SỐ TÀI LIỆU":
     **Lưu ý**
     - File đầu vào phải là PDF.
     - Không chỉnh sửa file sau khi ký nếu không sẽ mất hiệu lực.
-    - Có thể ký nhiều lần trên 1 file.
     """)
 
 # ==========================================
