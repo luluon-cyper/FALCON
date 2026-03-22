@@ -5,7 +5,6 @@ from sign import sign_file
 from verify import verify_file
 from keygen import generate_keys
 
-# --- 1. CẤU HÌNH TRANG ---
 st.set_page_config(
     page_title="PQC Hybrid Signature",
     page_icon="logobig.jpg",
@@ -13,29 +12,26 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. CSS CUSTOM LẤY CẢM HỨNG TỪ TAILWIND (app.tsx) ---
 st.markdown("""
     <style>
-    /* Màu nền tổng thể web giống bg-slate-50 */
     .stApp {
         background-color: #f8fafc;
     }
-    
-    /* Thiết kế Card giống file React */
+    /* Card */
     [data-testid="stVerticalBlock"] > div:has(div.stFrame) {
         background-color: #ffffff;
-        border-radius: 0.75rem; /* rounded-xl */
-        padding: 1.5rem; /* p-6 */
-        border: 1px solid #e2e8f0; /* border-gray-200 */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin-bottom: 1.5rem;
     }
 
-    /* Style Header các phần */
+    /* Header */
     .section-header {
-        font-size: 1.25rem; /* text-xl */
-        font-weight: 600; /* font-semibold */
-        color: #1e293b; /* text-slate-800 */
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e293b;
         margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
@@ -44,22 +40,22 @@ st.markdown("""
         padding-bottom: 0.75rem;
     }
 
-    /* Nút bấm Primary (Màu xanh Blue-600 giống Tailwind) */
+    /* Nút bấm Primary */
     .stButton>button {
         background-color: #2563eb !important; 
         color: white !important;
-        border-radius: 0.5rem !important; /* rounded-lg */
+        border-radius: 0.5rem !important;
         height: 3rem !important;
-        font-weight: 600 !important; /* font-semibold */
+        font-weight: 600 !important;
         border: none !important;
         transition: all 0.2s ease;
     }
     .stButton>button:hover {
-        background-color: #1d4ed8 !important; /* hover:bg-blue-700 */
+        background-color: #1d4ed8 !important;
         box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
     }
 
-    /* Nút Download (Màu xám/đen) */
+    /* Nút Download */
     .stDownloadButton>button {
         background-color: #f1f5f9 !important;
         color: #334155 !important;
@@ -70,13 +66,13 @@ st.markdown("""
         color: #0f172a !important;
     }
 
-    /* Cảnh báo (Alerts) */
+    /* Cảnh báo */
     div[data-testid="stAlert"] {
         border-radius: 0.5rem;
         border: none;
     }
     
-    /* Upload file area */
+    /* Upload file */
     div[data-testid="stFileUploader"] {
         padding: 1rem;
         border-radius: 0.5rem;
@@ -86,19 +82,13 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. SIDEBAR (THANH ĐIỀU HƯỚNG) ---
 with st.sidebar:
-    # st.markdown("## PQC Hybrid System")
     st.markdown(
     "<h2 style='color:#1d4ed8; font-weight:700;'>PQC Hybrid System</h2>",
     unsafe_allow_html=True)
     st.caption("Bảo mật đa tầng Ed25519 + Falcon-512")
     st.markdown("---")
-    # menu = st.radio(
-    #     "ĐIỀU HƯỚNG CHỨC NĂNG",
-    #     ["QUẢN LÝ KHÓA", "KÝ SỐ TÀI LIỆU", "XÁC THỰC TÀI LIỆU"],
-    #     help="Chọn một tính năng để thao tác với hệ thống."
-    # )
+    
     if "menu" not in st.session_state:
         st.session_state.menu = "QUẢN LÝ KHÓA"
 
@@ -117,7 +107,7 @@ with st.sidebar:
     st.markdown("---")
     st.info("Hệ thống đảm bảo an toàn dữ liệu tuyệt đối trước nguy cơ từ máy tính lượng tử.")
 
-# --- 4. HẰNG SỐ & HÀM TRỢ GIÚP ---
+
 PK_ED, SK_ED = "ed25519_pub.key", "ed25519_priv.key"
 PK_FALCON, SK_FALCON = "falcon_pub.key", "falcon_priv.key"
 
@@ -125,9 +115,6 @@ def render_page_header(title, desc):
     st.markdown(f"<h1 style='color: #0f172a; font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem;'>{title}</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='color: #64748b; font-size: 1.1rem; margin-bottom: 2rem;'>{desc}</p>", unsafe_allow_html=True)
 
-# ==========================================
-# TRANG 1: QUẢN LÝ KHÓA
-# ==========================================
 
 if menu == "QUẢN LÝ KHÓA":
     render_page_header("Khởi tạo bộ khóa Hybrid", "Tạo và lưu trữ các cặp khóa an toàn kết hợp thuật toán cổ điển và hậu lượng tử.")
@@ -135,7 +122,6 @@ if menu == "QUẢN LÝ KHÓA":
     with st.container(border=True):
         st.markdown('<div class="section-header">Bảng điều khiển sinh khóa</div>', unsafe_allow_html=True)
         
-        # Nút bấm đã được sửa lỗi logic (chỉ xóa/tạo khi bấm)
         if st.button("BẮT ĐẦU TẠO BỘ KHÓA MỚI", use_container_width=True):
             with st.spinner("Đang tính toán các tham số mạng tinh thể và đường cong elliptic..."):
                 for k in [SK_ED, PK_ED, SK_FALCON, PK_FALCON]:
@@ -145,7 +131,6 @@ if menu == "QUẢN LÝ KHÓA":
 
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Hiển thị khu vực tải khóa nếu file đã tồn tại
     if os.path.exists(SK_ED) and os.path.exists(SK_FALCON):
         with st.container(border=True):
             st.markdown('<div class="section-header">Tải bộ khóa về máy</div>', unsafe_allow_html=True)
@@ -176,9 +161,7 @@ if menu == "QUẢN LÝ KHÓA":
     - Public Key dùng để xác thực, có thể chia sẻ.
     """)
 
-# ==========================================
-# TRANG 2: KÝ SỐ
-# ==========================================
+
 elif menu == "KÝ SỐ TÀI LIỆU":
     render_page_header("Ký số tài liệu PDF", "Sử dụng khóa bí mật để đóng dấu điện tử lên tài liệu của bạn.")
 
@@ -234,9 +217,7 @@ elif menu == "KÝ SỐ TÀI LIỆU":
     - Không chỉnh sửa file sau khi ký nếu không sẽ mất hiệu lực.
     """)
 
-# ==========================================
-# TRANG 3: XÁC THỰC
-# ==========================================
+
 else:
     render_page_header("Xác thực tính toàn vẹn", "Kiểm tra tài liệu đã ký có bị chỉnh sửa trái phép hay không.")
 
