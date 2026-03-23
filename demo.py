@@ -1,7 +1,6 @@
 from sign import sign_file
 from verify import verify_file
 from keygen import generate_keys
-from modify import modify_pdf_middle_newfile
 
 def modify_pdf(input_path: str, output_path: str):
 
