@@ -20,7 +20,7 @@
 * **Giao diện Desktop Độc Lập**: Hoạt động mượt mà như một phần mềm bình thường mà không cần cấu hình môi trường phức tạp.
 
 ## Tải về và Cài đặt
-I. Dành cho End user
+## I. Dành cho End user
 ### Yêu cầu hệ thống
 * Hệ điều hành Windows 10, 11
 * Trình duyệt Web: Microsoft Edge hoặc Google Chrome
@@ -31,7 +31,7 @@ I. Dành cho End user
 3. Chạy file vừa tải về và bấm **Next** để cài đặt.
 4. Mở ứng dụng **eSign** từ shortcut trên màn hình Desktop của bạn và sử dụng.
 
-II. Dành cho Developer
+## II. Dành cho Developer
 ### Yêu cầu hệ thống (Developer)
 * Môi trường: Python 3.9+
 * Hệ điều hành: Windows 10, 11
