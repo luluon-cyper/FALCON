@@ -140,7 +140,7 @@ if menu == "QUẢN LÝ KHÓA":
                 st.markdown("#### Hệ mật mã Ed25519")
                 with open(PK_ED, "rb") as f: st.download_button("Tải Public Key", f, PK_ED, use_container_width=True)
                 with open(SK_ED, "rb") as f: st.download_button("Tải Private Key (Bảo mật)", f, SK_ED, use_container_width=True)
-                
+  
             with col2:
                 st.markdown("#### Hệ mật mã Falcon-512")
                 with open(PK_FALCON, "rb") as f: st.download_button("Tải Public Key", f, PK_FALCON, use_container_width=True)
@@ -160,7 +160,6 @@ if menu == "QUẢN LÝ KHÓA":
     - Nếu mất Private Key, bạn sẽ không thể ký tài liệu.
     - Public Key dùng để xác thực, có thể chia sẻ.
     """)
-
 
 elif menu == "KÝ SỐ TÀI LIỆU":
     render_page_header("Ký số tài liệu PDF", "Sử dụng khóa bí mật để đóng dấu điện tử lên tài liệu của bạn.")
@@ -216,7 +215,6 @@ elif menu == "KÝ SỐ TÀI LIỆU":
     - File đầu vào phải là PDF.
     - Không chỉnh sửa file sau khi ký nếu không sẽ mất hiệu lực.
     """)
-
 
 else:
     render_page_header("Xác thực tính toàn vẹn", "Kiểm tra tài liệu đã ký có bị chỉnh sửa trái phép hay không.")
