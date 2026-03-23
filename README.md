@@ -21,8 +21,8 @@
 
 ## Tải về và Cài đặt
 
-1. Chuyển đến trang **[Releases](https://github.com/luluon-cyper/FALCON/releases/tag/v1.0)** của dự án.
-2. Tải xuống file cài đặt **`eSign_v1.0_Setup.exe`**.
+1. Chuyển đến trang **[Releases](https://github.com/luluon-cyper/FALCON/releases/tag/v1.1)** của dự án.
+2. Tải xuống file cài đặt **`eSign_v1.1_Setup.exe`**.
 3. Chạy file vừa tải về và bấm **Next** để cài đặt.
 4. Mở ứng dụng **eSign** từ shortcut trên màn hình Desktop của bạn và sử dụng.
 
