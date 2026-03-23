@@ -1,6 +1,7 @@
 from pqcrypto.sign import falcon_512
 from nacl.signing import SigningKey
 from utils import *
+import time
 
 from utils import prepare_file_with_placeholder
 
@@ -24,9 +25,12 @@ def sign_file(input_path: str, output_path: str, sk_ed: str, sk_falcon: str) -> 
         pdf_bytes = f.read()
 
     byte_range, _, _ = extract_byte_range_and_placeholder(pdf_bytes)
+    start_sign_ed25519 = time.time()
     digest = compute_sha512_digest_for_byte_range(pdf_bytes, byte_range)
     sk = SigningKey(sk1)
     signature = sk.sign(digest).signature
+    print("kích thước chữ ký ed25519: ", len(signature))
+    print("thơi gian ký ed25519 ",time.time()-start_sign_ed25519)
 
     signed_pdf_bytes = embed_signature_into_pdf(pdf_bytes, signature)
     with open(output_path, "wb") as f:
@@ -40,10 +44,14 @@ def sign_file(input_path: str, output_path: str, sk_ed: str, sk_falcon: str) -> 
         pdf_bytes = f.read()
 
     byte_range, _, _ = extract_byte_range_and_placeholder(pdf_bytes, 1)
+    start_sign_falcon = time.time()
     digest = compute_shake256_digest_for_byte_range(pdf_bytes, byte_range)
     signature = falcon_512.sign(sk2, digest)
+    print("kích thước chữ ký falcon: ", len(signature))
+    print("thơi gian ký falcon ",time.time()-start_sign_falcon)
 
     signed_pdf_bytes = embed_signature_into_pdf(pdf_bytes, signature, 1)
     with open(output_path, "wb") as f:
         f.write(signed_pdf_bytes)
+
     return output_path
