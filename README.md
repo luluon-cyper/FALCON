@@ -1,4 +1,4 @@
-# eSign v1.0 - Hệ thống Ký số Hybrid (Ed25519 & Falcon-512)
+# eSign v1.1 - Hệ thống Ký số Hybrid (Ed25519 & Falcon-512)
 
 <p align="center">
   <img src="logobig.jpg" alt="eSign Logo" width="150"/>
@@ -8,7 +8,7 @@
 
 ## Giới thiệu
 
-**eSign v1.0** là một ứng dụng phần mềm Desktop tiên phong trong lĩnh vực mật mã, kết hợp sức mạnh của ký số truyền thống với các chuẩn mật mã hậu lượng tử (Post-Quantum Cryptography - PQC). 
+**eSign v1.1** là một ứng dụng phần mềm Desktop tiên phong trong lĩnh vực mật mã, kết hợp sức mạnh của ký số truyền thống với các chuẩn mật mã hậu lượng tử (Post-Quantum Cryptography - PQC). 
 
 Ứng dụng cung cấp giải pháp ký số **đa tầng (hybrid)** đảm bảo tính toàn vẹn và xác thực của tài liệu, chống lại nguy cơ bị bẻ khóa bởi máy tính lượng tử trong tương lai. Giao diện trực quan giúp bất kỳ ai cũng có thể tạo khóa, ký tài liệu và xác thực một cách dễ dàng.
 
@@ -24,7 +24,6 @@
 ### Yêu cầu hệ thống
 * Hệ điều hành Windows 10, 11
 * Trình duyệt Web: Microsoft Edge hoặc Google Chrome
-* Thư viện: Microsoft Visual C++ Redistributable x64 (đã bao gồm trong file setup)
 ### Cách cài đặt
 1. Chuyển đến trang **[Releases](https://github.com/luluon-cyper/FALCON/releases/tag/v1.1)** của dự án.
 2. Tải xuống file cài đặt **`eSign_v1.1_Setup.exe`**.
@@ -35,7 +34,6 @@
 ### Yêu cầu hệ thống (Developer)
 * Môi trường: Python 3.9+
 * Hệ điều hành: Windows 10, 11
-* Thư viện C/C++: Microsoft Visual C++ Redistributable x64.
 * Thư viện Python:
     - streamlit: Xây dựng giao diện Web App.
     - pynacl: Cung cấp thuật toán ký số Ed25519.
