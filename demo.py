@@ -12,7 +12,7 @@ verify_results = []
 
 
 def main():
-    input_file = "data_test/file_test_500mb.pdf"
+    input_file = "data_test/file_test_1mb.pdf"
     pk_ed = "key/ed25519_pub.key"
     sk_ed = "key/ed25519_priv.key"
     pk_falcon = "key/falcon_pub.key"
@@ -106,19 +106,19 @@ def main():
         print(f"Run {i+1:03d} completed. Verify OK = {ok}")
 
     # Save sign results
-    with open("bechmark/sign_benchmark_500mb.csv", "w", newline="", encoding="utf-8") as f:
+    with open("benchmark/sign_benchmark_1mb.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=sign_results[0].keys())
         writer.writeheader()
         writer.writerows(sign_results)
 
     # Save verify results
-    with open("bechmark/verify_benchmark_500mb.csv", "w", newline="", encoding="utf-8") as f:
+    with open("benchmark/verify_benchmark_1mb.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=verify_results[0].keys())
         writer.writeheader()
         writer.writerows(verify_results)
 
-    print("Saved: sign_benchmark_500mb.csv")
-    print("Saved: verify_benchmark_500mb.csv")
+    print("Saved: sign_benchmark_1mb.csv")
+    print("Saved: verify_benchmark_1mb.csv")
 
 
 if __name__ == "__main__":
